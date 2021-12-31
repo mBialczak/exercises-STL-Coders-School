@@ -1,3 +1,0 @@
-/home/piworzuop/Exercises/CodersSchool-simple-exercises/exercises-STL/vector-task-1/build/CMakeFiles/rebuild_cache.dir
-/home/piworzuop/Exercises/CodersSchool-simple-exercises/exercises-STL/vector-task-1/build/CMakeFiles/edit_cache.dir
-/home/piworzuop/Exercises/CodersSchool-simple-exercises/exercises-STL/vector-task-1/build/CMakeFiles/vector-task-1.dir
