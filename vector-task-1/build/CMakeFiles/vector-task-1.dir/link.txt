@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/vector-task-1.dir/main.cpp.o  -o ../bin/vector-task-1 
