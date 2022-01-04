@@ -5,6 +5,8 @@ void printSizeCapacity(const std::vector<int>& vec)
 {
     std::cout << "vec size: " << vec.size()
               << "\nvec capacity: " << vec.capacity()
+              << "\nsize of vector object in bytes: "
+              << sizeof(vec)
               << std::endl;
 }
 

@@ -9,11 +9,14 @@ void print(const Container& container)
     for (auto&& el : container) {
         std::cout << el << ' ';
     }
-    std::cout << std::endl;
+    std::cout << "Container size in bytes: " << sizeof(container) << std::endl;
 }
 
 int main(int argc, char const* argv[])
 {
+    std::cout << "empty forward_list size in bytes=\n "
+              << sizeof(std::forward_list<int> {}) << std::endl;
+
     std::forward_list elements { 0, 1, 2, 3, 4, 5, 6 };
 
     print(elements);

@@ -9,11 +9,14 @@ void printContainer(const Container& container)
     for (auto&& el : container) {
         std::cout << el << ' ';
     }
-    std::cout << std::endl;
+
+    std::cout << "Container size in bytes: " << sizeof(container) << std::endl;
 }
 
 int main(int argc, char const* argv[])
 {
+    std::cout << "empty list size in bytes= "
+              << sizeof(std::list<int> {}) << std::endl;
     std::list elements { 0, 1, 2, 3, 4, 5 };
 
     printContainer(elements);

@@ -8,12 +8,13 @@ void printArray(const std::array<T, N>& arr)
     for (auto&& el : arr) {
         std::cout << el << '\t';
     }
-    std::cout << std::endl;
+    std::cout << "Container size in bytes: " << sizeof(arr) << std::endl;
 }
 
 int main(int argc, const char** argv)
 {
     std::array<int, 10> arr1;
+    printArray(arr1);
     arr1.fill(5);
     arr1[3] = 3;
 
