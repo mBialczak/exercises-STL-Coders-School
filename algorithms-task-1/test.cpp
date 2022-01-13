@@ -30,10 +30,10 @@ TEST(testElementsCount, testIfAnyLessThanOne)
 TEST(testElementsCount, testIfAnyGreaterThanOne)
 {
     std::vector<int> v = { 8, 2, 5, 3, 4, 4, 2, 7, 6, 6, 1, 8, 9 };
-    bool any_greater_than_five = std::any_of(begin(v), end(v), [](const auto el) {
+    bool all_greater_than_five = std::all_of(begin(v), end(v), [](const auto el) {
         return el > 1;
     });
-    ASSERT_EQ(true, any_greater_than_five);
+    ASSERT_EQ(false, all_greater_than_five);
 }
 
 int main(int argc, char** argv)
