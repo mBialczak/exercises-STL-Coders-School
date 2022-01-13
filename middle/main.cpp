@@ -10,8 +10,7 @@
 template <class Iter>
 auto middle(Iter first, Iter last)
 {
-    std::advance(first, (std::distance(first, last) - 1) / 2);
-    return first;
+    return std::next(first, (std::distance(first, last) - 1) / 2);
 }
 
 template <class Container>
