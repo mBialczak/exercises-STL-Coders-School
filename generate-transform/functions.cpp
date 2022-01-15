@@ -36,15 +36,16 @@ std::vector<std::string> subtaskTwo(const std::vector<std::pair<int, std::string
 // every second letter of the alphabet
 std::vector<char> subtaskThree()
 {
-    const std::string alphabet { "abcdefghijklmnopqrstuvwxyz" };
-    std::vector<char> result(alphabet.size() / 2);
-    std::generate(begin(result),
-                  end(result),
-                  [&, n = 0]() mutable {
-                      char letter = alphabet.at(n);
-                      n += 2;
-                      return letter;
-                  });
+    // const std::string alphabet { "abcdefghijklmnopqrstuvwxyz" };
+    // latin alphabet is supposed to contain 26 letters, so we take half
+    const auto size = 13;
+    std::vector<char> result(size);
+    std::generate_n(begin(result),
+                    size,
+                    [letter = 'a' - 2]() mutable {
+                        letter += 2;
+                        return letter;
+                    });
 
     return result;
 }
