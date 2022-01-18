@@ -41,11 +41,11 @@ int main(int argc, const char** argv)
     //  3.  Napisz 2 komparatory:
     //       pointXCompare, który porównuje tylko wartości x ze struktury Point
     //       pointYCompare, który porównuje tylko wartości y ze struktury Point
-    auto pointXCompare = [](const Point lhs, const Point rhs) {
-        return lhs.x < rhs.y;
+    auto pointXCompare = [](const auto& lhs, const auto& rhs) {
+        return lhs.x < rhs.x;
     };
 
-    auto pointYCompare = [](const Point lhs, const Point rhs) {
+    auto pointYCompare = [](const auto& lhs, const auto& rhs) {
         return lhs.y < rhs.y;
     };
 
@@ -63,7 +63,7 @@ int main(int argc, const char** argv)
     std::stable_sort(begin(d), end(d), pointXCompare);
     print(d);
     // 6. Użyj sort do posortowania d względem wartości y
-    std::ranges::stable_sort(d, pointYCompare);
+    std::ranges::sort(d, pointYCompare);
     print(d);
 
     return 0;
