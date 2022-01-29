@@ -32,6 +32,14 @@ struct Point
     int y;
 };
 
+// operator allowing for sorting Points based on the distance from point [0,0]
+bool operator<(const Point lhs, const Point rhs)
+{
+    auto lhs_distance_sq = pow(lhs.x, 2) + pow(lhs.y, 2);
+    auto rhs_distance_sq = pow(rhs.x, 2) + pow(rhs.y, 2);
+    return lhs_distance_sq < rhs_distance_sq;
+}
+
 int main(int argc, char const* argv[])
 {
     // 1a.
@@ -70,9 +78,9 @@ int main(int argc, char const* argv[])
     std::map<Point, std::string> citiesB;
     std::transform(citiesA.begin(),
                    citiesA.end(),
-                   std::back_inserter(citiesA),
-                   [](const auto& el) {
-                       return { el->second, el->first }
+                   std::inserter(citiesB, citiesB.begin()),
+                   [](const auto& el) -> std::pair<Point, std::string> {
+                       return { el.second, el.first };
                    });
     return 0;
 }
