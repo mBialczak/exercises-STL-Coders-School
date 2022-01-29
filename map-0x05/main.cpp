@@ -53,15 +53,21 @@ int main(int argc, char const* argv[])
     // 2a. Sprawdź czy w mapie jest element, który znajduje się w promieniu 70
     //      od środka układu współrzędnych (0, 0)
 
-    bool is_city_in_radious =
-        std::ranges::any_of(citiesA.cbegin(),
-                            citiesA.cend(),
-                            [](const auto& entry) {
-                                auto [x, y] = entry.second;
-                                auto distance_squared = pow(x, 2) + pow(y, 2);
-                                constexpr auto radious_sqared = pow(70, 2);
-                                return distance_squared < radious_sqared;
-                            });
+    auto point_in_range = [radius = 70](auto point) {
+        auto [x, y] = point;
+        auto distance_squared = pow(x, 2) + pow(y, 2);
+        return distance_squared < pow(radius, 2);
+    };
+
+    bool is_city_in_radious = std::ranges::any_of(citiesA.cbegin(),
+                                                  citiesA.cend(),
+                                                  [&](const auto& entry) {
+                                                      // auto [x, y] = entry.second;
+                                                      // auto distance_squared = pow(x, 2) + pow(y, 2);
+                                                      // constexpr auto radious_sqared = pow(70, 2);
+                                                      // return distance_squared < radious_sqared;
+                                                      return point_in_range(entry.second);
+                                                  });
 
     std::cout << "There is a city in range below 70: "
               << std::boolalpha << is_city_in_radious << '\n';
@@ -82,5 +88,16 @@ int main(int argc, char const* argv[])
                    [](const auto& el) -> std::pair<Point, std::string> {
                        return { el.second, el.first };
                    });
+
+    // 2b. Sprawdź czy w odwróconej mapie jest element, który znajduje się w promieniu 70
+    // od środka układu współrzędnych (0, 0)
+    auto it = std::ranges::find_if(citiesB,
+                                   [&](const auto& entry) {
+                                       return point_in_range(entry.first);
+                                   });
+    if (it != citiesB.end()) {
+        std::cout << "There is a city in citiesB in range less then 70 from 0,0\n";
+    }
+
     return 0;
 }
