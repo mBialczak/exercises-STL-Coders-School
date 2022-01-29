@@ -65,5 +65,14 @@ int main(int argc, char const* argv[])
                   << search_result->second.x
                   << " y=" << search_result->second.y << std::endl;
     }
+
+    //  1b. Skopiuj te dane do mapy std::map<Point, std::string>
+    std::map<Point, std::string> citiesB;
+    std::transform(citiesA.begin(),
+                   citiesA.end(),
+                   std::back_inserter(citiesA),
+                   [](const auto& el) {
+                       return { el->second, el->first }
+                   });
     return 0;
 }
