@@ -52,7 +52,6 @@ int main(int argc, char const* argv[])
 
     // 2a. Sprawdź czy w mapie jest element, który znajduje się w promieniu 70
     //      od środka układu współrzędnych (0, 0)
-
     auto point_in_range = [radius = 70](auto point) {
         auto [x, y] = point;
         auto distance_squared = pow(x, 2) + pow(y, 2);
@@ -62,10 +61,6 @@ int main(int argc, char const* argv[])
     bool is_city_in_radious = std::ranges::any_of(citiesA.cbegin(),
                                                   citiesA.cend(),
                                                   [&](const auto& entry) {
-                                                      // auto [x, y] = entry.second;
-                                                      // auto distance_squared = pow(x, 2) + pow(y, 2);
-                                                      // constexpr auto radious_sqared = pow(70, 2);
-                                                      // return distance_squared < radious_sqared;
                                                       return point_in_range(entry.second);
                                                   });
 
@@ -97,6 +92,18 @@ int main(int argc, char const* argv[])
                                    });
     if (it != citiesB.end()) {
         std::cout << "There is a city in citiesB in range less then 70 from 0,0\n";
+    }
+
+    //  3b. Pobierz i wypisz współrzędne Sydney
+    it = std::ranges::find_if(citiesB,
+                              [&](const auto& entry) {
+                                  return entry.second == "Sydney";
+                              });
+
+    if (it != citiesB.end()) {
+        std::cout << "Sydney coords: x="
+                  << search_result->second.x
+                  << " y=" << search_result->second.y << std::endl;
     }
 
     return 0;
