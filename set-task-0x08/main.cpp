@@ -29,4 +29,8 @@ int main()
     std::set<int, std::greater<int>> numbers(begin(temp_array),
                                              end(temp_array));
     print(numbers);
+
+    // 2.  Wstaw nowe elementy: -10, 0, 10, 100, -100
+    numbers.insert({ -10, 0, 10, 100, -100 });
+    print(numbers);
 }
