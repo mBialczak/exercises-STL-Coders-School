@@ -35,6 +35,7 @@ int main()
     print(numbers);
 
     // 3.  Wygeneruj drugi zbiór z liczb od 0 do 40 i zapisz go w std::multiset
+    std::iota(begin(temp_array), end(temp_array), 0);
     std::multiset<int> numbers2 { begin(temp_array), end(temp_array) };
     print(numbers2);
 
