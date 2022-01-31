@@ -62,26 +62,26 @@ int main()
     for (const auto& [city, point] : citiesA) {
         auto [is_in_range, range] = point_in_range(point);
         if (is_in_range) {
-            std::cout << city << "-> distance from origin: " << range << std::endl;
+            std::cout << city << "-> distance from origin: " << sqrt(range) << std::endl;
         }
     }
 
-    // // 3a. Pobierz i wypisz współrzędne Sydney
-    // auto search_result = citiesA.find("Sydney");
-    // if (search_result != citiesA.end()) {
-    //     std::cout << "Sydney coords: x="
-    //               << search_result->second.x
-    //               << " y=" << search_result->second.y << std::endl;
-    // }
+    // 3a. Pobierz i wypisz współrzędne Sydney
+    auto search_result = citiesA.find("Sydney");
+    if (search_result != citiesA.end()) {
+        std::cout << "Sydney coords: x="
+                  << search_result->second.x
+                  << " y=" << search_result->second.y << std::endl;
+    }
 
     //  1b. Skopiuj te dane do mapy std::unordered_map<Point, std::string>
-    std::unordered_map<Point, std::string> citiesB;
-    std::transform(citiesA.begin(),
-                   citiesA.end(),
-                   std::inserter(citiesB, citiesB.begin()),
-                   [](const auto& el) -> std::pair<Point, std::string> {
-                       return { el.second, el.first };
-                   });
+    // std::unordered_map<Point, std::string> citiesB;
+    // std::transform(citiesA.begin(),
+    //                citiesA.end(),
+    //                std::inserter(citiesB, citiesB.begin()),
+    //                [](const auto& el) -> std::pair<Point, std::string> {
+    //                    return { el.second, el.first };
+    //                });
 
     // // 2b. Sprawdź czy w odwróconej mapie jest element, który znajduje się w promieniu 70
     // // od środka układu współrzędnych (0, 0)
