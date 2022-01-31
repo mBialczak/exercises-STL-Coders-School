@@ -62,17 +62,17 @@ int main()
     for (const auto& [city, point] : citiesA) {
         auto [is_in_range, range] = point_in_range(point);
         if (is_in_range) {
-            std::cout << city << "-> distance from origin: " << range << std::endl;
+            std::cout << city << "-> distance from origin: " << sqrt(range) << std::endl;
         }
     }
 
-    // // 3a. Pobierz i wypisz współrzędne Sydney
-    // auto search_result = citiesA.find("Sydney");
-    // if (search_result != citiesA.end()) {
-    //     std::cout << "Sydney coords: x="
-    //               << search_result->second.x
-    //               << " y=" << search_result->second.y << std::endl;
-    // }
+    // 3a. Pobierz i wypisz współrzędne Sydney
+    auto search_result = citiesA.find("Sydney");
+    if (search_result != citiesA.end()) {
+        std::cout << "Sydney coords: x="
+                  << search_result->second.x
+                  << " y=" << search_result->second.y << std::endl;
+    }
 
     // //  1b. Skopiuj te dane do mapy std::map<Point, std::string>
     // std::map<Point, std::string> citiesB;
