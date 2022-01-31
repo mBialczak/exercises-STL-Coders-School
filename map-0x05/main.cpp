@@ -98,6 +98,13 @@ int main()
 
     // // 2b. Sprawdź czy w odwróconej mapie jest element, który znajduje się w promieniu 70
     // // od środka układu współrzędnych (0, 0)
+    for (const auto& [point, city] : citiesB) {
+        auto [is_in_range, range] = point_in_range(point);
+        if (is_in_range) {
+            std::cout << city << "-> distance from origin: " << sqrt(range) << std::endl;
+        }
+    }
+
     // auto it = std::ranges::find_if(citiesB,
     //                                [&](const auto& entry) {
     //                                    return point_in_range(entry.first);
