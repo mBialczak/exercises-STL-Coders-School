@@ -74,14 +74,14 @@ int main()
                   << " y=" << search_result->second.y << std::endl;
     }
 
-    // //  1b. Skopiuj te dane do mapy std::map<Point, std::string>
-    // std::map<Point, std::string> citiesB;
-    // std::transform(citiesA.begin(),
-    //                citiesA.end(),
-    //                std::inserter(citiesB, citiesB.begin()),
-    //                [](const auto& el) -> std::pair<Point, std::string> {
-    //                    return { el.second, el.first };
-    //                });
+    //  1b. Skopiuj te dane do mapy std::unordered_map<Point, std::string>
+    std::unordered_map<Point, std::string> citiesB;
+    std::transform(citiesA.begin(),
+                   citiesA.end(),
+                   std::inserter(citiesB, citiesB.begin()),
+                   [](const auto& el) -> std::pair<Point, std::string> {
+                       return { el.second, el.first };
+                   });
 
     // // 2b. Sprawdź czy w odwróconej mapie jest element, który znajduje się w promieniu 70
     // // od środka układu współrzędnych (0, 0)
