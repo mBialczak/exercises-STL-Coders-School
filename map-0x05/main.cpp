@@ -105,25 +105,17 @@ int main()
         }
     }
 
-    // auto it = std::ranges::find_if(citiesB,
-    //                                [&](const auto& entry) {
-    //                                    return point_in_range(entry.first);
-    //                                });
-    // if (it != citiesB.end()) {
-    //     std::cout << "There is a city in citiesB in range less then 70 from 0,0\n";
-    // }
-
     // //  3b. Pobierz i wypisz współrzędne Sydney
-    // it = std::ranges::find_if(citiesB,
-    //                           [&](const auto& entry) {
-    //                               return entry.second == "Sydney";
-    //                           });
+    auto it = std::ranges::find_if(citiesB,
+                                   [&](const auto& entry) {
+                                       return entry.second == "Sydney";
+                                   });
 
-    // if (it != citiesB.end()) {
-    //     std::cout << "Sydney coords: x="
-    //               << search_result->second.x
-    //               << " y=" << search_result->second.y << std::endl;
-    // }
+    if (it != citiesB.end()) {
+        std::cout << "Sydney coords: x="
+                  << search_result->second.x
+                  << " y=" << search_result->second.y << std::endl;
+    }
 
     return 0;
 }
