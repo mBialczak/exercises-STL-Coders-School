@@ -18,7 +18,7 @@ void print(const C& container)
     for (const auto el : container) {
         std::cout << el << ", ";
     }
-    std::cout << std::endl;
+    std::cout << "\n---------------------------------" << std::endl;
 };
 
 int main()
@@ -33,4 +33,13 @@ int main()
     // 2.  Wstaw nowe elementy: -10, 0, 10, 100, -100
     numbers.insert({ -10, 0, 10, 100, -100 });
     print(numbers);
+
+    // 3.  Wygeneruj drugi zbiór z liczb od 0 do 40 i zapisz go w std::multiset
+    std::multiset<int> numbers2 { begin(temp_array), end(temp_array) };
+    print(numbers2);
+
+    // 4.  Wstaw nowe elementy: -10, 0, 10, 100, -100
+    // 5.  Połącz oba zbiory w jeden (ma to być std::multiset)
+    // 6.  Znajdź wszystkie elementy równe 0 i 50
+    //   Co każdy krok wypisuj zawartości kontenerów.
 }
