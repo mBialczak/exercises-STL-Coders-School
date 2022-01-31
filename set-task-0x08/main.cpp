@@ -43,6 +43,8 @@ int main()
     print(numbers2);
 
     // 5.  Połącz oba zbiory w jeden (ma to być std::multiset)
+    numbers2.merge(numbers);
+    print(numbers2);
     // 6.  Znajdź wszystkie elementy równe 0 i 50
     //   Co każdy krok wypisuj zawartości kontenerów.
 }
