@@ -39,6 +39,9 @@ int main()
     print(numbers2);
 
     // 4.  Wstaw nowe elementy: -10, 0, 10, 100, -100
+    numbers2.insert({ -10, 0, 10, 100, -100 });
+    print(numbers2);
+
     // 5.  Połącz oba zbiory w jeden (ma to być std::multiset)
     // 6.  Znajdź wszystkie elementy równe 0 i 50
     //   Co każdy krok wypisuj zawartości kontenerów.
