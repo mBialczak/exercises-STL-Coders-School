@@ -45,6 +45,18 @@ int main()
     // 5.  Połącz oba zbiory w jeden (ma to być std::multiset)
     numbers2.merge(numbers);
     print(numbers2);
-    // 6.  Znajdź wszystkie elementy równe 0 i 50
-    //   Co każdy krok wypisuj zawartości kontenerów.
+    // 6.  Znajdź wszystkie elementy równe 0 i 50;
+    // auto [first, last] = numbers2.equal_range(0);
+    std::vector<int> zeros_and_fifties;
+    if (numbers2.contains(0)) {
+        auto [first, last] = numbers2.equal_range(0);
+        std::copy(first, last, std::back_inserter(zeros_and_fifties));
+    }
+    if (numbers2.contains(50)) {
+        auto [first, last] = numbers2.equal_range(50);
+        std::copy(first, last, std::back_inserter(zeros_and_fifties));
+    }
+    print(zeros_and_fifties);
+
+    return 0;
 }
