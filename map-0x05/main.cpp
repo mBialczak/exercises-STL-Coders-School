@@ -94,7 +94,7 @@ int main()
     // 1a.
     std::unordered_map<std::string, Point> citiesA = {
         { "Wrocław", { 17, 51 } },
-        { "Moskwa", { 47, 55 } },
+        { "Moskwa", { 37, 55 } },
         { "Nowy Jork", { -74, 40 } },
         { "Sydney", { 151, -33 } }
     };
@@ -103,15 +103,15 @@ int main()
     //      od środka układu współrzędnych (0, 0)
     auto point_in_range = [radius = 70](auto point) {
         auto [x, y] = point;
-        auto distance_squared = pow(x, 2) + pow(y, 2);
-        return std::pair<bool, double> { distance_squared < pow(radius, 2),
-                                         distance_squared };
+        auto distance = sqrt(pow(x, 2) + pow(y, 2));
+        return std::pair<bool, double> { distance < radius,
+                                         distance };
     };
 
     for (const auto& [city, point] : citiesA) {
         auto [is_in_range, range] = point_in_range(point);
         if (is_in_range) {
-            std::cout << city << "-> distance from origin: " << sqrt(range) << std::endl;
+            std::cout << city << "-> distance from origin: " << range << std::endl;
         }
     }
 
@@ -162,7 +162,7 @@ int main()
     for (const auto& [point, city] : citiesB) {
         auto [is_in_range, range] = point_in_range(point);
         if (is_in_range) {
-            std::cout << city << "-> distance from origin: " << sqrt(range) << std::endl;
+            std::cout << city << "-> distance from origin: " << range << std::endl;
         }
     }
 
