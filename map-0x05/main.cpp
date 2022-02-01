@@ -31,10 +31,13 @@ struct Point
     int x;
     int y;
 
-    bool operator==(const Point& other) const
-    {
-        return x == other.x && y == other.y;
-    }
+    // <=> comparison version
+    auto operator<=>(const Point&) const = default;
+    // custom comparison version
+    // bool operator==(const Point& other) const
+    // {
+    //     return x == other.x && y == other.y;
+    // }
 };
 
 // operator allowing for sorting Points based on the distance from point [0,0]
@@ -89,6 +92,19 @@ void printCity(const Umap& container, const std::string& cityName)
     }
 }
 
+template <typename Umap>
+void printBucketInfo(const Umap& container)
+{
+    auto bc = container.bucket_count();
+    std::cout << "bucket_count: " << bc << "\n"
+              << "max_load_factor: " << container.max_load_factor() << "\n"
+              << "load_factor: " << container.load_factor() << "\n";
+    for (std::size_t i = 0; i < bc; ++i) {
+        std::cout << "bucket[" << i << "] size: " << container.bucket_size(i) << '\n';
+    }
+    std::cout << "-----------------------------\n";
+}
+
 int main()
 {
     // 1a.
@@ -118,7 +134,12 @@ int main()
     // 3a. Pobierz i wypisz współrzędne Sydney
     printCity(citiesA, "Sydney");
 
+    // additional: checking bucket info
+    std::cout << "-----------------\nCitiesA bucket info" << '\n';
+    printBucketInfo(citiesA);
+
     // PART B
+    std::cout << "===== part B ========\n";
     //  1b. Skopiuj te dane do mapy std::unordered_map<Point, std::string>
 
     // custom hash for unordered_map<Point,std::string>
@@ -177,5 +198,11 @@ int main()
     printCity(citiesB, "Sydney");
     printCity(citiesC, "Sydney");
 
+    // additional: checking bucket info
+    std::cout << "-----------------\nCitiesB bucket info" << '\n';
+    printBucketInfo(citiesB);
+
+    std::cout << "-----------------\nCitiesC bucket info" << '\n';
+    printBucketInfo(citiesC);
     return 0;
 }
