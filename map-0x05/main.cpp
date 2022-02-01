@@ -38,12 +38,12 @@ struct Point
 };
 
 // operator allowing for sorting Points based on the distance from point [0,0]
-bool operator<(const Point lhs, const Point rhs)
-{
-    auto lhs_distance_sq = pow(lhs.x, 2) + pow(lhs.y, 2);
-    auto rhs_distance_sq = pow(rhs.x, 2) + pow(rhs.y, 2);
-    return lhs_distance_sq < rhs_distance_sq;
-}
+// bool operator<(const Point lhs, const Point rhs)
+// {
+//     auto lhs_distance_sq = pow(lhs.x, 2) + pow(lhs.y, 2);
+//     auto rhs_distance_sq = pow(rhs.x, 2) + pow(rhs.y, 2);
+//     return lhs_distance_sq < rhs_distance_sq;
+// }
 
 // injected hash specialization version
 template <>
